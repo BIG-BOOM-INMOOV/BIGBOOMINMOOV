@@ -11,12 +11,12 @@ class AppController:
         self.app.title('Big Boom InMoov')
         self.app.bind('<Escape>', lambda event: self.app.destroy())
 
-        # self.board = pyfirmata2.Arduino('COM3')
+        self.board = pyfirmata2.Arduino('COM3')
 
         # Head Motors
-        # self.horizontal_mtr = self.board.get_pin('d:11:s')
-        # self.vertical_mtr = self.board.get_pin('d:12:s')
-        # self.mouth_mtr = self.board.get_pin('d:13:s')
+        self.horizontal_mtr = self.board.get_pin('d:11:s')
+        self.vertical_mtr = self.board.get_pin('d:12:s')
+        self.mouth_mtr = self.board.get_pin('d:13:s')
 
         self.show_home()
 

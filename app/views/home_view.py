@@ -31,11 +31,19 @@ class HomeView(ctk.CTkFrame):
         self.content_frame = ctk.CTkFrame(self)
         self.content_frame.pack(side='left', fill='both', expand=True, padx=10, pady=10)
 
+        #View Dictionary
+        self.views = {
+            'head_manual_view': None,
+            'head_lookat_view': None
+        }
+
         self.show_home()
 
     def clear_content(self):
         for widget in self.content_frame.winfo_children():
             widget.destroy()
+        for view in self.views:
+            self.views[view] = None
 
     def show_home(self):
         self.clear_content()
@@ -44,10 +52,12 @@ class HomeView(ctk.CTkFrame):
 
     def show_head_manual(self):
         self.clear_content()
-        self.head_manual_view = HeadManualView(self.content_frame, self.controller)
-        self.head_manual_view.pack(fill="both", expand=True)
+        # self.head_manual_view = HeadManualView(self.content_frame, self.controller)
+        self.views['head_manual_view'] = HeadManualView(self.content_frame, self.controller)
+        self.views['head_manual_view'].pack(fill="both", expand=True)
 
     def show_head_lookat(self):
         self.clear_content()
-        self.head_lookat_view = HeadLookAtView(self.content_frame, self.controller)
-        self.head_lookat_view.pack(fill="both", expand=True)
+        # self.head_lookat_view = HeadLookAtView(self.content_frame, self.controller)
+        self.views['head_lookat_view'] = HeadLookAtView(self.content_frame, self.controller)
+        self.views['head_lookat_view'].pack(fill="both", expand=True)

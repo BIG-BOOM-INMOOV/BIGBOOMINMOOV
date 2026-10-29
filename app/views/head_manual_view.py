@@ -6,9 +6,9 @@ class HeadManualView(ctk.CTkFrame):
         self.controller = controller
 
         # Motors
-        # self.horizontal_mtr = self.controller.horizontal_mtr
-        # self.vertical_mtr = self.controller.vertical_mtr
-        # self.mouth_mtr = self.controller.mouth_mtr
+        self.horizontal_mtr = self.controller.horizontal_mtr
+        self.vertical_mtr = self.controller.vertical_mtr
+        self.mouth_mtr = self.controller.mouth_mtr
 
         # Angle Sliders
 
@@ -51,13 +51,13 @@ class HeadManualView(ctk.CTkFrame):
     def rot_mtr(self, value, slider_name):
         match slider_name:
             case "horizontal":
-                # self.horizontal_mtr.write(value)
+                self.horizontal_mtr.write(value)
                 self.horizontal_value.configure(text=f"{int(value):03d}")
             case "vertical":
-                # self.vertical_mtr.write(value)
+                self.vertical_mtr.write(value)
                 self.vertical_value.configure(text=f"{int(value):03d}")
             case "mouth":
-                # self.mouth_mtr.write(value)
+                self.mouth_mtr.write(value)
                 self.mouth_value.configure(text=f"{int(value):03d}")
             case _:
                 print("motor not connected to slider")

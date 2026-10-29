@@ -10,6 +10,9 @@ class HeadLookAtView(ctk.CTkFrame):
         super().__init__(parent)
         self.controller = controller
 
+        self.video_label = ctk.CTkLabel(self, text="")
+        self.video_label.pack(padx=10, pady=10)
+
         self.horizontal_mtr = self.controller.horizontal_mtr
         self.vertical_mtr = self.controller.vertical_mtr
 
@@ -22,6 +25,8 @@ class HeadLookAtView(ctk.CTkFrame):
         self.cap = cv2.VideoCapture(0)
 
         self.model = YOLO("../models/yolov8n.pt")
+
+        self.thing_recognition()
 
     def thing_recognition(self):
         success, frame = self.cap.read()
@@ -53,3 +58,5 @@ class HeadLookAtView(ctk.CTkFrame):
             self.video_label.image = ctk_image
         else:
             print("Failed to grab frame")
+        
+        self.video_label.after(20, self.thing_recognition)
